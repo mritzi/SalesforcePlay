@@ -1,0 +1,37 @@
+<aura:component Controller="AddressLookupCmpController" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+	<!-- attributes -->
+	<aura:attribute name="searchKeyword" type="String" default=""/>
+    <aura:attribute name="lookupSpinnerClass" type="String" default=""/>
+    <aura:attribute name="suggestionWrapper" type="Object" default="{}"/>
+    <aura:attribute name="selectedAddress" type="Object" default="{}"/>
+    <aura:attribute name="message" type="String" default=""/>
+    <aura:attribute name="lead" type="Lead"/>
+	<!-- event handlers/registers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="eAddressSelectedEvent" event="c:AddressSelectedEvent" action="{!c.getAddressData}"/>
+
+	<!-- component content -->
+	<div aura:id="parentDiv" class="slds-form-element slds-lookup slds-is-close" data-select="single">
+        <label class="slds-form-element__label">
+            <lightning:icon class="slds-input__icon" iconName="utility:chevrondown" size="x-small" alternativeText="down"/>
+            <span class="biggerText slds-p-left_small">Address Details</span>
+        </label>
+        <!--This part is to display search bar for lookup -->
+        <div class="slds-form-element__control">
+			<div class="slds-input-has-icon slds-input-has-icon--left">
+                <lightning:buttonIcon class="slds-input__icon buttonIcon" onclick="{!c.clear}" iconName="utility:close" size="x-small" alternativeText="clear"/>
+                <div aura:id="lookupField">
+                    <ui:inputText click="{!c.recommendPlaces}" updateOn="keyup" keyup="{!c.recommendPlaces}" class="slds-lookup__search-input slds-input leftPadding" value="{!v.searchKeyword}" placeholder="Enter a location"/>
+                </div>
+            </div>
+        </div>
+        <!--This part is to display lookup result List-->
+        <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-lookup__menu slds" role="listbox">
+            <center><lightning:spinner class="{!v.lookupSpinnerClass}"/></center>
+            <center>{!v.message}</center>
+            <aura:iteration items="{!v.suggestionWrapper.predictions}" var="address">
+                <c:AddressResultComponent address="{!address}"/>
+            </aura:iteration>
+        </ul>
+    </div>
+</aura:component>

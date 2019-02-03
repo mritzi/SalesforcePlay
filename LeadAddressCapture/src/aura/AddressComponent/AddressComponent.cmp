@@ -1,0 +1,60 @@
+<aura:component Controller="AddressCmpController" implements="force:lightningQuickActionWithoutHeader,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<!-- attributes -->
+    <aura:attribute name="lead" type="Lead"/>
+    <aura:attribute name="spinnerClass" type="String" default="slds-hide"/>
+	<!-- event handlers/registers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <!--component content -->
+    <lightning:spinner class="{!v.spinnerClass}"/>
+	<div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-1">
+            <c:AddressLookupComponent lead="{!v.lead}"/>
+        </div>
+    </div>
+    <div class="slds-p-left_small slds-p-right_small">
+    	<div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-1">
+                <lightning:input label="Street" disabled="true" value="{!v.lead.Street}"/>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:input label="City" disabled="true" value="{!v.lead.City}"/>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:input label="State" disabled="true" value="{!v.lead.State}"/>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:input label="Postal Code" disabled="true" value="{!v.lead.PostalCode}"/>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:input label="Country" disabled="true" value="{!v.lead.Country}"/>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:input label="Latitude" disabled="true" value="{!v.lead.GeoLocation__Latitude__s}"/>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning:input label="Longitude" disabled="true" value="{!v.lead.GeoLocation__Longitude__s}"/>
+            </div>
+        </div>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-1">
+                <lightning:input label="Nearby Landmark" value="{!v.lead.Nearby_Landmark__c}"/>
+            </div>
+        </div>
+    </div>
+    <div class="slds-p-top_medium">
+    	<div class="modal-footer slds-modal__footer slds-size_1-of-1">
+            <div class="">
+                <lightning:button class="slds-button slds-button_neutral" label="Cancel" onclick="{!c.cancel}" />
+                <lightning:button class="slds-button slds-button--brand" label="Save" onclick="{!c.save}"/>
+            </div>
+        </div>
+    </div>
+
+</aura:component>

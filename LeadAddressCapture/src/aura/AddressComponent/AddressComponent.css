@@ -1,0 +1,6 @@
+.THIS .slds-modal__footer{
+    /* to override default modal footer styling*/
+    background:none;
+    box-shadow:none;
+    text-align:center;
+}
