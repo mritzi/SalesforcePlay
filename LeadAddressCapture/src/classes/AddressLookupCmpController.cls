@@ -1,3 +1,11 @@
+/*
+ * Developer Name : M. Rizwan (rizwanakhtar08@gmail.com)
+ * Github : https://github.com/mritzi/SalesforcePlay
+ * Please submit enhacement requests @ GitHub repo link
+ *********** CHANGE LOG *************************************************************************************
+ * Developer            Date            Description
+ * mritzi               2019/Feb/04     Original version with basic error handling
+ */
 public class AddressLookupCmpController {
     /*************** public methods ***************/
 
@@ -74,7 +82,7 @@ public class AddressLookupCmpController {
 
     /***************  Wrappers used in deserializing API responses [only necessary elements deserilaized] ***************/
 
-    /* wrapper to deserialize suggestions */
+    /* wrappers to deserialize suggestions */
     public class SuggestionWrapper{
         @AuraEnabled public String status;
         @AuraEnabled public String errorMessage;
@@ -89,7 +97,7 @@ public class AddressLookupCmpController {
         @AuraEnabled public List<String> types = new List<String>();
     }
 
-    /* Wrapper to deserialize place details */
+    /* Wrappers to deserialize place details */
     public class DetailWrapper{
         @AuraEnabled public String errorMessage;
         @AuraEnabled public Result result = new Result();

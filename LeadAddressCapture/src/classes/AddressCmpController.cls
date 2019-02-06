@@ -1,3 +1,12 @@
+/*
+ * Developer Name : M. Rizwan (rizwanakhtar08@gmail.com)
+ * Github : https://github.com/mritzi/SalesforcePlay
+ * Please submit enhacement requests @ GitHub repo link
+ *********** CHANGE LOG *************************************************************************************
+ * Developer            Date            Description
+ * mritzi               2019/Feb/04     Original version with basis error handling
+ */
+
 public class AddressCmpController {
     /* method to get lead details based on lead record Id */
     @AuraEnabled public static Lead getLead(Id recordId){
@@ -17,9 +26,9 @@ public class AddressCmpController {
                 isSuccess = true;
             }catch(Exception ex){
                 System.debug(ex.getMessage());
-                isSuccess = false;
             }
         }
+        //method will return 'true' only when update succeeds, else 'false' will be returned
         return isSuccess;
     }
 }
