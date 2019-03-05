@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>key__c</field>
-        <value xsi:type="xsd:string">AIzaSyArewbgszgcVirMv3_77I4oR27iUrYu_fc</value>
+        <value xsi:type="xsd:string">rMv3_77I4oR27iUrYu_fc</value>
     </values>
 </CustomMetadata>
